@@ -1,8 +1,15 @@
 import { Burger, Group, Header, Menu, Stack } from '@mantine/core';
-import { IconAddressBook, IconCornerDownLeftDouble, IconMusic, IconUsers } from '@tabler/icons';
+import {
+  IconAddressBook,
+  IconCornerDownLeftDouble,
+  IconMusic,
+  IconUsers,
+  IconLogin,
+} from '@tabler/icons';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ColorSchemeToggle } from './ColorSchemeToggle/ColorSchemeToggle';
+import { SideLogo } from './Icons/logos';
 import { FacebookIcon, InstagramIcon, TikTokIcon } from './Icons/socialMediaIcons';
 
 const AppMenu = () => {
@@ -40,6 +47,9 @@ const AppMenu = () => {
         <Link href="/contact-us" passHref>
           <Menu.Item icon={<IconAddressBook size={14} />}>Contact Us!</Menu.Item>
         </Link>
+        <Link href="https://musical-improv-nyc.fly.dev/admin" passHref>
+          <Menu.Item icon={<IconLogin size={14} />}>Admin Login</Menu.Item>
+        </Link>
       </Menu.Dropdown>
     </Menu>
   );
@@ -55,9 +65,11 @@ export const AppHeader = () => (
     height={65}
     p="xs"
   >
-    <Group position="apart">
+    <Group position="apart" sx={{ height: '100%' }}>
       <AppMenu />
-      <Link href="/">MUSICAL IMPROV</Link>
+      <Link href="/" passHref>
+        <SideLogo />
+      </Link>
       <Group>
         <Group style={{ gap: 0 }}>
           <TikTokIcon />

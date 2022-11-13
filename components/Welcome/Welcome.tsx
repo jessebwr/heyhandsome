@@ -4,6 +4,7 @@ import Link from 'next/link';
 import useStyles from './Welcome.styles';
 import { getAssetUrl, Shows, Teammates } from '../../cms/directus';
 import ShowList from '../showList';
+import { UpwardsLogo } from '../Icons/logos';
 
 const variants = {
   initial: {
@@ -56,10 +57,12 @@ export function Welcome({
         })}
       </Group>
       <Title className={classes.title} align="center" mt={100}>
-        We are{' '}
-        <Text inherit variant="gradient" component="span">
-          THIS TEAM!
-        </Text>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>We are</div>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ width: '80%', maxWidth: 500 }}>
+            <UpwardsLogo />
+          </div>
+        </div>
       </Title>
       <Text color="dimmed" align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
         Just a couple of whippersnappers in NYC singing and improvising, while hosting incredibly
