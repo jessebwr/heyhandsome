@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { Grid, Title, Stack, Text, MediaQuery } from '@mantine/core';
 import { Shows, OneItemShow } from '../cms/directus';
 
-export const ShowRow = ({ show }: { show: OneItemShow }) => {
+export const ShowRow = ({ show, showLink }: { show: OneItemShow; showLink: boolean }) => {
   const datetime = dayjs(show?.date);
 
   return (
@@ -31,8 +31,16 @@ export const ShowRow = ({ show }: { show: OneItemShow }) => {
       </Grid.Col>
       <Grid.Col id={`${show?.id}`} span={8} sx={{ borderBottom: '1px solid' }}>
         <Link href={`show/${show?.id}`} passHref>
-          <Title sx={{ cursor: 'pointer' }} order={4}>
-            {show?.title}
+          <Title
+            sx={{
+              cursor: 'pointer',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            }}
+            order={4}
+          >
+            <a>{show?.title}</a>
           </Title>
         </Link>
         <Text dangerouslySetInnerHTML={{ __html: show?.description ?? '' }} />
@@ -54,11 +62,11 @@ export const ShowRow = ({ show }: { show: OneItemShow }) => {
   );
 };
 
-const ShowList = ({ shows }: { shows: Shows }) => (
+const ShowList = ({ shows, showLink = false }: { shows: Shows; showLink: boolean }) => (
   <Text sx={{ display: 'flex', justifyContent: 'center' }}>
     <Grid sx={{ maxWidth: 1100, width: '100%' }}>
       {shows?.map((show) => (
-        <ShowRow show={show} />
+        <ShowRow show={show} showLink={showLink} />
       ))}
     </Grid>
   </Text>
