@@ -1,4 +1,4 @@
-import { Burger, Group, Header, Menu, Stack } from '@mantine/core';
+import { Box, Burger, Group, Header, Menu } from '@mantine/core';
 import {
   IconAddressBook,
   IconCornerDownLeftDouble,
@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ColorSchemeToggle } from './ColorSchemeToggle/ColorSchemeToggle';
 import { SideLogo } from './Icons/logos';
-import { FacebookIcon, InstagramIcon, TikTokIcon } from './Icons/socialMediaIcons';
+import { InstagramIcon } from './Icons/socialMediaIcons';
 
 const AppMenu = () => {
   const [opened, setOpened] = useState(false);
@@ -71,13 +71,11 @@ export const AppHeader = () => (
         <SideLogo />
       </Link>
       <Group>
-        <Group style={{ gap: 0 }}>
-          <TikTokIcon />
-          <Stack style={{ gap: 0 }}>
-            <FacebookIcon />
+        <Link href="https://www.instagram.com" passHref>
+          <Box sx={{ cursor: 'pointer' }}>
             <InstagramIcon />
-          </Stack>
-        </Group>
+          </Box>
+        </Link>
         <ColorSchemeToggle />
       </Group>
     </Group>
