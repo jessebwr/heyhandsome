@@ -30,23 +30,23 @@ export const ShowRow = ({ show, showLink }: { show: OneItemShow; showLink: boole
         </Stack>
       </Grid.Col>
       <Grid.Col id={`${show?.id}`} span={8} sx={{ borderBottom: '1px solid' }}>
-        <Link href={`show/${show?.id}`} passHref>
-          <Title
-            sx={
-              showLink
-                ? {
-                    cursor: 'pointer',
-                    '&:hover': {
-                      textDecoration: 'underline',
-                    },
-                  }
-                : undefined
-            }
-            order={4}
-          >
-            <a>{show?.title}</a>
-          </Title>
-        </Link>
+        {showLink ? (
+          <Link href={`/show/${show?.id}`} passHref>
+            <Title
+              sx={{
+                cursor: 'pointer',
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              }}
+              order={4}
+            >
+              <a>{show?.title}</a>
+            </Title>
+          </Link>
+        ) : (
+          <Title order={4}>{show?.title}</Title>
+        )}
         <Text dangerouslySetInnerHTML={{ __html: show?.description ?? '' }} />
       </Grid.Col>
       <Grid.Col
