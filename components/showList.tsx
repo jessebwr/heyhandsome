@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Grid, Title, Stack, Text, MediaQuery } from '@mantine/core';
 import { Shows, OneItemShow } from '../cms/directus';
 
-const ShowRow = ({ show }: { show: OneItemShow }) => {
+export const ShowRow = ({ show }: { show: OneItemShow }) => {
   const datetime = dayjs(show?.date);
 
   return (
@@ -29,7 +30,11 @@ const ShowRow = ({ show }: { show: OneItemShow }) => {
         </Stack>
       </Grid.Col>
       <Grid.Col id={`${show?.id}`} span={8} sx={{ borderBottom: '1px solid' }}>
-        <Title order={4}>{show?.title}</Title>
+        <Link href={`show/${show?.id}`} passHref>
+          <Title sx={{ cursor: 'pointer' }} order={4}>
+            {show?.title}
+          </Title>
+        </Link>
         <Text dangerouslySetInnerHTML={{ __html: show?.description ?? '' }} />
       </Grid.Col>
       <Grid.Col

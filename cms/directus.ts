@@ -16,6 +16,7 @@ type Show = {
   title: string;
   description: string;
   location: string;
+  poster: string;
 };
 
 // Map your collections to its respective types. The SDK will
@@ -57,6 +58,15 @@ const getShowsData = async (future: boolean) => {
 export const getFutureShows = async (): Promise<Shows> => getShowsData(true);
 
 export const getPastShows = async (): Promise<Shows> => getShowsData(false);
+
+export const getShowById = async (id?: string): Promise<OneItemShow> => {
+  if (!id) {
+    return null;
+  }
+
+  const show = await showsCollection.readOne(id);
+  return show;
+};
 
 export const getTeammates = async (): Promise<Teammates> => {
   const teammatesQuery = await teammatesCollection.readByQuery({ limit: -1 });
