@@ -18,7 +18,7 @@ export default function ShowPage({ show }: { show: OneItemShow }) {
 
   return (
     <Group style={{ paddingTop: '30px' }} position="center">
-      <Image src={getAssetUrl(show?.poster)} height="600" width="345" />
+      {show?.poster && <Image src={getAssetUrl(show?.poster)} height="600" width="345" />}
       <ShowList shows={[show]} />
     </Group>
   );
