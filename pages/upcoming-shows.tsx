@@ -9,5 +9,5 @@ export async function getServerSideProps() {
 }
 
 export default function UpcomingShowsPage({ upcomingShows }: { upcomingShows: Shows }) {
-  return <ShowList shows={upcomingShows} />;
+  return <ShowList shows={upcomingShows} showLink />;
 }

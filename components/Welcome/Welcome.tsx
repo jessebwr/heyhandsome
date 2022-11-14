@@ -74,7 +74,7 @@ export function Welcome({
           UPCOMING SHOWS
         </Text>
       </Title>
-      <ShowList shows={upcomingShows} />
+      <ShowList shows={upcomingShows} showLink />
     </>
   );
 }

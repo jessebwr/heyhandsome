@@ -32,12 +32,16 @@ export const ShowRow = ({ show, showLink }: { show: OneItemShow; showLink: boole
       <Grid.Col id={`${show?.id}`} span={8} sx={{ borderBottom: '1px solid' }}>
         <Link href={`show/${show?.id}`} passHref>
           <Title
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                textDecoration: 'underline',
-              },
-            }}
+            sx={
+              showLink
+                ? {
+                    cursor: 'pointer',
+                    '&:hover': {
+                      textDecoration: 'underline',
+                    },
+                  }
+                : undefined
+            }
             order={4}
           >
             <a>{show?.title}</a>
@@ -62,7 +66,7 @@ export const ShowRow = ({ show, showLink }: { show: OneItemShow; showLink: boole
   );
 };
 
-const ShowList = ({ shows, showLink = false }: { shows: Shows; showLink: boolean }) => (
+const ShowList = ({ shows, showLink = false }: { shows: Shows; showLink?: boolean }) => (
   <Text sx={{ display: 'flex', justifyContent: 'center' }}>
     <Grid sx={{ maxWidth: 1100, width: '100%' }}>
       {shows?.map((show) => (

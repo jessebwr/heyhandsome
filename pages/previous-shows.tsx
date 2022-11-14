@@ -10,7 +10,7 @@ export async function getServerSideProps() {
 export default function PreviousShowsPage({ previousShows }: { previousShows: Shows }) {
   return (
     <>
-      <ShowList shows={previousShows} />
+      <ShowList shows={previousShows} showLink />
     </>
   );
 }
