@@ -12,8 +12,13 @@ export default function UpcomingShowsPage({ upcomingShows }: { upcomingShows: Sh
   const username = 'taylorswift';
   
   return (
-    <Link href={`/ig/${username}`}>
-      <button>Open Instagram</button>
-    </Link>
+    <>
+      <Link href={`/ig/${username}`}>
+        <button>Open Instagram</button>
+      </Link>
+      <button onClick={() => {
+        navigator.share();
+      }}>Open Instagram</button>
+    </>
   );
 }
