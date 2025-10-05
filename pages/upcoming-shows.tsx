@@ -1,5 +1,6 @@
 import { getFutureShows, Shows } from '../cms/directus';
 import ShowList from '../components/showList';
+import Link  from 'next/link';
 
 // This gets called on every request
 export async function getServerSideProps() {
@@ -8,6 +9,14 @@ export async function getServerSideProps() {
   return { props: { upcomingShows } };
 }
 
+
+
 export default function UpcomingShowsPage({ upcomingShows }: { upcomingShows: Shows }) {
-  return <ShowList shows={upcomingShows} showLink />;
+  const username = 'taylorswift';
+  
+  return (
+    <Link href={`/ig/${username}`}>
+      <button>Open Instagram</button>
+    </Link>
+  );
 }
